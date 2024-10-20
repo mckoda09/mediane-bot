@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/denoland/deno/main/cli/schemas/config-file.v1.json",
+  "tasks": {
+    "start": "deno run -A --watch dev.ts"
+  },
+  "imports": {
+    "grammy": "https://deno.land/x/grammy@v1.30.0/mod.ts",
+    "@std/dotenv": "jsr:@std/dotenv"
+  },
+  "unstable": ["kv", "cron"]
+}
