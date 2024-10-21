@@ -64,7 +64,7 @@ aliasComposer.callbackQuery("alias-yes", async (c) => {
   const lastName = await getLastName(c.from.id);
 
   await c.editMessageText(
-    `Тебя зовут ${firstName} ${lastName}?\n\n Да ✅`,
+    `Тебя зовут ${firstName} ${lastName}?\n\nДа ✅`,
   );
   await c.reply("Хорошо! Теперь ты можешь записываться.");
   await c.answerCallbackQuery();
@@ -79,7 +79,7 @@ aliasComposer.callbackQuery("alias-no", async (c) => {
   const lastName = await getLastName(c.from.id);
 
   await c.editMessageText(
-    `Тебя зовут ${firstName} ${lastName}?\n\n Нет ❌`,
+    `Тебя зовут ${firstName} ${lastName}?\n\nНет ❌`,
   );
   await c.reply("Как тебя зовут?");
 

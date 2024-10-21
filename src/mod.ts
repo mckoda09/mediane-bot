@@ -2,6 +2,8 @@ import { Bot } from "grammy";
 import { aliasComposer } from "./composers/alias.ts";
 import { clearStatus } from "./status.ts";
 import { channelComposer } from "./composers/channel.ts";
+import {delay} from "./delay.ts"
+import {stickers} from "./sticker.ts"
 
 export const logsId = Number(Deno.env.get("LOGS_ID"));
 export const adminId = Number(Deno.env.get("ADMIN_ID"));
