@@ -5,8 +5,6 @@ import { channelComposer } from "./composers/channel.ts";
 import {delay} from "./delay.ts"
 import {stickers} from "./sticker.ts"
 
-console.log("CLEANING BRANCH")
-
 export const logsId = Number(Deno.env.get("LOGS_ID"));
 export const adminId = Number(Deno.env.get("ADMIN_ID"));
 export const username = Deno.env.get("BOT_USERNAME");
