@@ -1,26 +1,20 @@
 import { Bot } from "grammy";
-import { aliasComposer } from "./composers/alias.ts";
-import { clearStatus } from "./status.ts";
+import { utilsComposer } from "./composers/utils.ts";
+import { channelAllowed } from "./middlewares/channel.ts";
 import { channelComposer } from "./composers/channel.ts";
-import {delay} from "./delay.ts"
-import {stickers} from "./sticker.ts"
+import { registerComposer } from "./composers/register.ts";
 
-export const logsId = Number(Deno.env.get("LOGS_ID"));
-export const adminId = Number(Deno.env.get("ADMIN_ID"));
-export const username = Deno.env.get("BOT_USERNAME");
-
-export const kv = await Deno.openKv();
+// Init
 export const bot = new Bot(Deno.env.get("TOKEN") || "");
-await bot.api.setMyCommands([
-  { command: "help", description: "Помощь по боту" },
-]);
+export const kv = await Deno.openKv();
 
-bot.chatType("private").command("cancel", async (c) => {
-  await clearStatus(c.from.id);
-  await c.react("👍");
-});
+// Middlewares
+bot.use(channelAllowed); // Check if channel is in allowed list
 
-bot.use(aliasComposer);
-bot.use(channelComposer);
+// Composers
+bot.use(utilsComposer); // Utilities, like /cancel
+bot.use(channelComposer); // ???
+bot.use(registerComposer); // User registration
 
+// Graceful catch
 bot.catch((e) => console.error(e.message));

@@ -1,6 +1,6 @@
 import { kv } from "./mod.ts";
 
-type Status = "firstName" | "lastName";
+type Status = "waitFirstName" | "waitLastName";
 
 const statusKey = (userId: number) => ["status", userId];
 
