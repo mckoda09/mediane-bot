@@ -168,6 +168,8 @@ registerComposer.callbackQuery(
       c.callbackQuery.message!.text + "\nДобавлен ✅",
     );
 
+    await c.api.sendMessage(c.from.id, "Твоя заявка одобрена! Скоро ты сможешь пользоваться ботом!")
+
     await c.answerCallbackQuery();
   },
 );
