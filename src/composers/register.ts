@@ -36,7 +36,12 @@ registerComposer.chatType("private").command("start", async (c) => {
       await c.replyWithSticker(stickers.hello);
       await c.reply("Привет!\nНапиши, как тебя зовут (только имя).");
 
-      await log("start register", c);
+      await log(
+        `${
+          c.from.first_name + (c.from.last_name ? " " + c.from.last_name : "")
+        } ${c.from.is_premium ? "⭐" : ""}\nstart register`,
+        c,
+      );
     }
   }
 });
@@ -168,7 +173,10 @@ registerComposer.callbackQuery(
       c.callbackQuery.message!.text + "\nДобавлен ✅",
     );
 
-    await c.api.sendMessage(uid, "Твоя заявка одобрена! Скоро ты сможешь пользоваться ботом!")
+    await c.api.sendMessage(
+      uid,
+      "Твоя заявка одобрена! Скоро ты сможешь пользоваться ботом!",
+    );
 
     await c.answerCallbackQuery();
   },
