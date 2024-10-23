@@ -141,7 +141,7 @@ registerComposer.chatType("private").callbackQuery("save", async (c) => {
   );
 });
 
-registerComposer.chatType("private").callbackQuery("save", async (c) => {
+registerComposer.chatType("private").callbackQuery("retry", async (c) => {
   await c.editMessageText(c.msg!.text + "\n\nНет ❌");
 
   await clearTmp(c.from.id);
