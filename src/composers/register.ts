@@ -160,7 +160,7 @@ registerComposer.callbackQuery(
     const register = await getRegister(uid);
     if (!register) return;
 
-    await setProfile(c.from.id, register);
+    await setProfile(uid, register);
 
     await deleteRegister(uid);
 
@@ -168,7 +168,7 @@ registerComposer.callbackQuery(
       c.callbackQuery.message!.text + "\nДобавлен ✅",
     );
 
-    await c.api.sendMessage(c.from.id, "Твоя заявка одобрена! Скоро ты сможешь пользоваться ботом!")
+    await c.api.sendMessage(uid, "Твоя заявка одобрена! Скоро ты сможешь пользоваться ботом!")
 
     await c.answerCallbackQuery();
   },
