@@ -96,7 +96,7 @@ registerComposer.chatType("private").callbackQuery("paid", async (c) => {
 });
 
 registerComposer.chatType("private").callbackQuery("free", async (c) => {
-  await setTmpIsFree(c.from.id, false);
+  await setTmpIsFree(c.from.id, true);
   await c.editMessageText(c.msg!.text + "\n\nПо льготе 🆓");
 
   const reply_markup = new InlineKeyboard();
