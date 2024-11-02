@@ -4,10 +4,7 @@
     "start": "deno run -A --watch dev.ts"
   },
   "imports": {
-    "i18n": "https://deno.land/x/t_i18n@2.1.0/mod.ts",
-    "grammy": "https://deno.land/x/grammy@v1.30.0/mod.ts",
-    "@grammy/hydrate": "https://deno.land/x/grammy_hydrate@v1.4.1/mod.ts",
-    "@std/dotenv": "jsr:@std/dotenv"
+    "grammy": "https://deno.land/x/grammy@v1.30.0/mod.ts"
   },
-  "unstable": ["kv", "cron"]
+  "unstable": ["kv"]
 }
