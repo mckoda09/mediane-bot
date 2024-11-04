@@ -4,7 +4,8 @@
     "start": "deno run -A --watch dev.ts"
   },
   "imports": {
-    "grammy": "https://deno.land/x/grammy@v1.30.0/mod.ts"
+    "grammy": "https://deno.land/x/grammy@v1.30.0/mod.ts",
+    "nanoid": "https://deno.land/x/nanoid/mod.ts"
   },
   "unstable": ["kv"]
 }
