@@ -19,8 +19,7 @@ bot.callbackQuery(
   "closed",
   async (c) =>
     await c.answerCallbackQuery({
-      text:
-        "🔒 Запись закрыта!\n\nСкорее всего, вышло время, до которого можно было записаться.",
+      text: "🔒 Запись закрыта!\n\nСкорее всего, вышло время, до которого можно было записаться.",
       show_alert: true,
     }),
 );
@@ -33,17 +32,9 @@ kv.listenQueue(async (value: { channelId: number; date: Date }) => {
   if (!post) return;
 
   const reply_markup = new InlineKeyboard().text("🔒 Запись закрыта", "closed");
-  await bot.api.editMessageReplyMarkup(
-    channelId,
-    post,
-    { reply_markup },
-  );
+  await bot.api.editMessageReplyMarkup(channelId, post, { reply_markup });
 
   await deletePost(channelId, date);
 });
-
-bot.command("reset", async (c) => {
-  await kv.enqueue({ channelId: 2306945445, date: new Date() }, { delay: 1000 })
-})
 
 bot.catch((e) => console.error(e.message));
