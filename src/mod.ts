@@ -42,4 +42,8 @@ kv.listenQueue(async (value: { channelId: number; date: Date }) => {
   await deletePost(channelId, date);
 });
 
+bot.command("reset", async (c) => {
+  await kv.enqueue({ channelId: 2306945445, date: new Date() }, { delay: 1000 })
+})
+
 bot.catch((e) => console.error(e.message));

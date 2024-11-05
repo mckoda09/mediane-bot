@@ -11,7 +11,7 @@ import { listEntries } from "../db/entry.ts";
 export const channelComposer = new Composer();
 
 channelComposer.use(async (c, next) => {
-  if (c.chat?.type == "channel" && await checkChannel(c.chatId || 0)) {
+  if (c.chat?.type == "channel" && (await checkChannel(c.chatId || 0))) {
     await next();
   }
 });
@@ -50,18 +50,17 @@ export const updatePost = async (channelId: number, date: Date) => {
 
 export const generatePostText = async (channelId: number, date: Date) => {
   const entries = await listEntries(channelId, date);
-  const { free, paid } = Object.groupBy(
-    entries,
-    (profile) => profile.isFree ? "free" : "paid",
+  const { free, paid } = Object.groupBy(entries, (profile) =>
+    profile.isFree ? "free" : "paid",
   );
 
-  const listText = [free, paid].filter((l) => l != undefined).map((l) =>
-    l.map((p) => `${p.firstName} ${p.lastName}`).join(
-      "\n",
-    )
-  ).join("\n");
+  const listText = [free, paid]
+    .filter((l) => l != undefined)
+    .map((l) => l.map((p) => `${p.firstName} ${p.lastName}`).join("\n"))
+    .join("\n");
 
-  const header = "<b>Столовая</b>\nна " +
+  const header =
+    "<b>Столовая</b>\nна " +
     new Date().toLocaleDateString("ru", {
       timeZone: "Asia/Yekaterinburg",
       day: "2-digit",
@@ -71,7 +70,7 @@ export const generatePostText = async (channelId: number, date: Date) => {
 
   const closeDate = new Date(date.getTime() + 3 * 60 * 60 * 1000);
   const footer =
-    `${free ? free.length : 0} пл. + ${paid ? paid.length : 0} беспл.` +
+    `${free ? free.length : 0} беспл. + ${paid ? paid.length : 0} пл.` +
     "\nЗапись открыта до " +
     closeDate.toLocaleTimeString("ru", { hour: "2-digit", minute: "2-digit" });
 
