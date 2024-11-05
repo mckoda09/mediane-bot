@@ -68,11 +68,7 @@ export const generatePostText = async (channelId: number, date: Date) => {
       weekday: "long",
     });
 
-  const closeDate = new Date(date.getTime() + 3 * 60 * 60 * 1000);
-  const footer =
-    `${free ? free.length : 0} беспл. + ${paid ? paid.length : 0} пл.` +
-    "\nЗапись открыта до " +
-    closeDate.toLocaleTimeString("ru", { hour: "2-digit", minute: "2-digit" });
+  const footer = `${free ? free.length : 0} беспл. + ${paid ? paid.length : 0} пл.`;
 
   return [header, listText, footer].filter((e) => e.length).join("\n\n");
 };
