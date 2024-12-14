@@ -60,7 +60,7 @@ export const generatePostText = async (channelId: number, date: Date) => {
     .join("\n");
 
   const header =
-    "<b>Столовая</b>\n " +
+    "<b>Столовая</b>\n" +
     new Date().toLocaleDateString("ru", {
       timeZone: "Asia/Yekaterinburg",
       day: "2-digit",
