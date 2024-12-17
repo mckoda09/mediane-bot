@@ -1,10 +1,6 @@
 import { Bot, InlineKeyboard } from "grammy";
 import { entryComposer } from "./composers/entry.ts";
-import {
-  channelComposer,
-  generatePostText,
-  updatePost,
-} from "./composers/channel.ts";
+import { channelComposer } from "./composers/channel.ts";
 import { deletePost, getPost } from "./db/channel.ts";
 
 export const bot = new Bot(Deno.env.get("TOKEN") || "");
